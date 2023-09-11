@@ -24,13 +24,9 @@ const KeywordsModal = ({ keywords, loading, isOpen, closeModal }) => {
               <CircularProgress isIndeterminate color="blue.300" />
             ) : (
               <Text>
-                {keywords ? (
-                  keywords
-                ) : (
-                  <p>
-                    Oops, no keywords found. Please enter different search text.
-                  </p>
-                )}
+                {keywords
+                  ? keywords
+                  : "Oops, no keywords found. Please enter different search text."}
               </Text>
             )}
           </ModalBody>
