@@ -11,13 +11,10 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   const extractKeywords = async (text) => {
-    console.log("extracting keywords", text);
     setLoading(true);
     setIsOpen(true);
 
     /* eslint-disable no-undef */
-    // console.log("env", import.meta.env.VITE_OPENAI_API_KEY);
-    // console.log("env", process.env);
 
     const options = {
       method: "POST",
@@ -44,7 +41,7 @@ const App = () => {
     const json = await response.json();
     const data = json?.choices[0].text.trim();
 
-    console.log("data/keywords returned:", data);
+    // console.log("data/keywords returned:", data);
     setKeywords(data);
     setLoading(false);
   };
