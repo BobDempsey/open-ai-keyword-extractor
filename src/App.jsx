@@ -11,15 +11,19 @@ const App = () => {
   const [loading, setLoading] = useState(false);
 
   const extractKeywords = async (text) => {
-    console.log("extracting keywords ", text);
+    console.log("extracting keywords", text);
     setLoading(true);
     setIsOpen(true);
+
+    /* eslint-disable no-undef */
+    // console.log("env", import.meta.env.VITE_OPENAI_API_KEY);
+    // console.log("env", process.env);
 
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+        Authorization: `Bearer ${process.env.VITE_OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
         model: "text-davinci-003",
@@ -36,7 +40,7 @@ const App = () => {
       }),
     };
 
-    const response = await fetch(import.meta.env.VITE_OPENAI_API_URL, options);
+    const response = await fetch(process.env.VITE_OPENAI_API_URL, options);
     const json = await response.json();
     const data = json?.choices[0].text.trim();
 
